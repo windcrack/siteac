@@ -22,6 +22,6 @@ console.log(mainList.shopGoods);
   let day = 30;
 function moneyDay(moneyDay){
    moneyDay = mainList.moneyM / day;
-   document.write('Вашь бюджет на день ' + Math.ceil(moneyDay) + " рублей.");
+   alert('Вашь бюджет на день ' + Math.ceil(moneyDay) + " рублей.");
 }
 moneyDay();
