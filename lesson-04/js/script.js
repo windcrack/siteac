@@ -64,13 +64,16 @@ let appData = {
     }
   },
   chooseIncome: function () {
-    let items = prompt("Что принесет дополнительный доход? (Перечислите через запяту", '');
-    
+    let items = prompt("Что принесет дополнительный доход? (Перечислите через запятую)", '');
     while (!isNaN(items) || items == null || items == ""){
-      items = prompt("Что принесет дополнительный доход? (Перечислите через запяту", '');
+      items = prompt("Что принесет дополнительный доход? (Перечислите через запятую)", '');
+    }
+    let second = prompt("Может что-то еще?");
+    while (!isNaN(second) || second == null || second == "") {
+      second = prompt("Может что-то еще?");
     }
     appData.income = items.split(', ');
-    appData.income.push(prompt("Может что-то еще?"));
+    appData.income.push(second);
     appData.income.sort();
     appData.income.forEach(function (item, i) {
       alert("Способы доп зароботка: " + (i+1) + " - " + item);
