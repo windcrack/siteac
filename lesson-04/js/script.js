@@ -65,11 +65,12 @@ let appData = {
   },
   chooseIncome: function () {
     let items = prompt("Что принесет дополнительный доход? (Перечислите через запятую)", ''); 
-    let second = prompt("Может что-то еще?");
+    let  second = prompt("Может что-то еще?");
     while (!isNaN(items) || items == null || items == ""){
-        items = prompt("Что принесет дополнительный доход? (Перечислите через запятую)", '');
-        second = prompt("Может что-то еще?");
+      items = prompt("Что принесет дополнительный доход? (Перечислите через запятую)", '');
+      second = prompt("Может что-то еще?");
       }
+    items += ", " + second;
     let check = items.split(', ');
     for (let i = 0; i < check.length; i++) {
         if (Number(check[i])) {
@@ -77,11 +78,6 @@ let appData = {
         }else{
           appData.income.push(check[i]);
         }
-    }
-    if(Number(second)){
-      alert(second + " не может быть числом");
-    }else{
-      appData.income.push(second);
     }
     appData.income.sort();
     appData.income.forEach(function (item, i) {
