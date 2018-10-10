@@ -64,16 +64,25 @@ let appData = {
     }
   },
   chooseIncome: function () {
-    let items = prompt("Что принесет дополнительный доход? (Перечислите через запятую)", '');
-    while (!isNaN(items) || items == null || items == ""){
-      items = prompt("Что принесет дополнительный доход? (Перечислите через запятую)", '');
-    }
+    let items = prompt("Что принесет дополнительный доход? (Перечислите через запятую)", ''); 
     let second = prompt("Может что-то еще?");
-    while (!isNaN(second) || second == null || second == "") {
-      second = prompt("Может что-то еще?");
+    while (!isNaN(items) || items == null || items == ""){
+        items = prompt("Что принесет дополнительный доход? (Перечислите через запятую)", '');
+        second = prompt("Может что-то еще?");
+      }
+    let check = items.split(', ');
+    for (let i = 0; i < check.length; i++) {
+        if (Number(check[i])) {
+          alert(check[i] + " - вы ввели число!");
+        }else{
+          appData.income.push(check[i]);
+        }
     }
-    appData.income = items.split(', ');
-    appData.income.push(second);
+    if(Number(second)){
+      alert(second + " не может быть числом");
+    }else{
+      appData.income.push(second);
+    }
     appData.income.sort();
     appData.income.forEach(function (item, i) {
       alert("Способы доп зароботка: " + (i+1) + " - " + item);
@@ -81,6 +90,6 @@ let appData = {
   }
 };
  for(let key in appData){
-   console.log("Наша программа включает в себя данные: " + key)
+   console.log("Наша программа включает в себя данные: " + appData[key]);
  }
 // console.log(appData);
