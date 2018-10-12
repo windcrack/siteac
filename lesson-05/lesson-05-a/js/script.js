@@ -15,5 +15,4 @@ adv.style.display = 'none';
 let apple = prompt("Как вы относитесь к технике Apple?", '');
 prompt1.style.fontSize = "3rem";
 prompt1.textContent = apple;
-// menu.createElement()
-// console.log(li);
+
