@@ -26,9 +26,6 @@ let calculation = document.getElementById('start'),
 let money, time;
 
 
-btnExpenses1.disabled = true;
-btnExpenses2.disabled = true;
-
 calculation.addEventListener('click', function (event) {
     event.preventDefault();
     time = prompt('Введите  дату в формате YYYY-MM-DD', '');
@@ -44,6 +41,7 @@ calculation.addEventListener('click', function (event) {
     year.value = new Date(Date.parse(time)).getFullYear();
     month.value = new Date(Date.parse(time)).getMonth() + 1;
     day.value = new Date(Date.parse(time)).getDay();
+    btnExpenses.disabled = false;
     btnExpenses1.disabled = false;
     btnExpenses2.disabled = false;
 });
@@ -63,7 +61,11 @@ btnExpenses.addEventListener('click', function () {
       i = i - 1;
     }
   }
-  btnExpenses.disabled = false;
+  if (btnExpenses.disabled == true) {
+    btnExpenses.disabled = false;
+  }else{
+    btnExpenses.disabled = true;
+  }
   valueExpenses.textContent = sum;
 });
 
