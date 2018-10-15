@@ -24,7 +24,9 @@ let calculation = document.getElementById('start'),
   day = document.querySelector('.day-value');
 
 let money, time;
-
+btnExpenses.style.opacity = 0.5;
+btnExpenses1.style.opacity = 0.5;
+btnExpenses2.style.opacity = 0.5;
 
 calculation.addEventListener('click', function (event) {
     event.preventDefault();
@@ -41,10 +43,25 @@ calculation.addEventListener('click', function (event) {
     year.value = new Date(Date.parse(time)).getFullYear();
     month.value = new Date(Date.parse(time)).getMonth() + 1;
     day.value = new Date(Date.parse(time)).getDay();
-    btnExpenses.disabled = false;
     btnExpenses1.disabled = false;
     btnExpenses2.disabled = false;
+    btnExpenses1.style.opacity = 1;
+    btnExpenses2.style.opacity = 1;
 });
+itemExpress.forEach(function (items) {
+  items.addEventListener('input', function () {
+    if (itemExpress != null && itemExpress != "") {
+      btnExpenses.disabled = false;
+      btnExpenses.style.opacity = 1;
+    } else {
+      btnExpenses.disabled = true;
+      btnExpenses.style.opacity = 0.5;
+    }
+  });
+});
+// itemExpress[0].addEventListener('input', function () {
+  
+// });
 
 let doubleSum = 0;
 btnExpenses.addEventListener('click', function () {
