@@ -139,7 +139,7 @@ btnExpenses.addEventListener('click', function () {
   for (let i = 0; i < itemExpress.length; i++) {
     let a = itemExpress[i].value,
         b = itemExpress[++i].value;
-    if ((typeof (a)) === 'string' && (typeof (a)) != null && (typeof (b)) != null && a != '' && b != '' && a.length < 50) {
+    if ((typeof (a)) === 'string' && (typeof (a)) != null && (typeof (b)) != null && a.length < 50) {
       console.log('Всё верно');
       appData.expenses[a] = b;
       summa += +b;
@@ -279,30 +279,6 @@ let appData = {
       }
     }
     appData.income.sort();
-    appData.income.forEach(function (item, i) {
-      alert("Способы доп зароботка: " + (i + 1) + " - " + item);
-    });
   }
 };
-for (let key in appData) {
-  console.log("Наша программа включает в себя данные: " + appData[key]);
-}
-// console.log(appData);
 
-
-
-
-// console.log(calculation);
-// console.log(valueBudget);
-// console.log(valueDaybudget);
-console.log(btnExpenses);
-console.log(btnExpenses1);
-console.log(btnExpenses2);
-console.log(itemOptional);
-console.log(IncomeChoose);
-console.log(savings);
-console.log(summ);
-console.log(percent);
-console.log(year);
-console.log(month);
-console.log(day);
