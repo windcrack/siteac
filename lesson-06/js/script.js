@@ -67,8 +67,7 @@ startBtn.addEventListener('click', function () {
     itemOptional[i].disabled = false;
     itemOptional[i].style.cursor = 'text';
   }
-  IncomeChoose.disabled = false;
-  IncomeChoose.style.cursor = 'text';
+  
 });
 
 // let expI = function (expValue) {
@@ -87,10 +86,11 @@ startBtn.addEventListener('click', function () {
 // }
 // }
 
+let exp1, exp2, exp3, exp4;
 let expI = function () {
-  let exp1 = itemExpress[0].value,
-      exp2 = itemExpress[1].value,
-      exp3 = itemExpress[2].value,
+      exp1 = itemExpress[0].value;
+      exp2 = itemExpress[1].value;
+      exp3 = itemExpress[2].value;
       exp4 = itemExpress[3].value;
   if (typeof (exp1 || exp3 === "string")) {
     if ((exp1 != '' && exp2 != '') || (exp3 != '' && exp4 != '')) {
@@ -136,17 +136,26 @@ itemOptional.forEach(function (item) {
 
 let summa = 0;
 btnExpenses.addEventListener('click', function () {
-  for (let i = 0; i < itemExpress.length; i++) {
-    let a = itemExpress[i].value,
-        b = itemExpress[++i].value;
-    if ((typeof (a)) === 'string' && (typeof (a)) != null && (typeof (b)) != null && a.length < 50) {
-      console.log('Всё верно');
-      appData.expenses[a] = b;
-      summa += +b;
-    } else {
-      i = i - 1;
+    if (exp1 != '' && exp2 != '') {
+      appData.expenses[exp1] = exp2; 
     }
-  }
+    if (exp3 != '' && exp4 != '') {
+      appData.expenses[exp3] = exp4;
+    }
+    summa += +exp2;
+    summa += +exp4;
+  // for (let i = 0; i < itemExpress.length; i++) {
+  //   let a = itemExpress[i].value,
+  //       b = itemExpress[++i].value;
+  //   if ((typeof (a)) === 'string' && (typeof (a)) != null && (typeof (b)) != null && a != '' && b != '' && a.length < 50) {
+  //     console.log('Всё верно');
+  //     appData.expenses[a] = b;
+  //     summa += +b;
+  //   } else {
+  //     alert('Введите ');
+  //     i = i - 1;
+  //   }
+  // }
   valueExpenses.textContent = summa;
 });
 
@@ -279,6 +288,10 @@ let appData = {
       }
     }
     appData.income.sort();
+    appData.income.forEach(function (item, i) {
+      alert("Способы доп зароботка: " + (i + 1) + " - " + item);
+    });
   }
 };
+
 
