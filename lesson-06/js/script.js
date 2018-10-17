@@ -32,6 +32,8 @@ btnExpenses1.style.opacity = 0.5;
 btnExpenses1.style.cursor = 'not-allowed';
 btnExpenses2.style.opacity = 0.5;
 btnExpenses2.style.cursor = 'not-allowed';
+IncomeChoose.disabled = true;
+IncomeChoose.style.cursor = 'not-allowed';
 for(let i = 0; i < itemExpress.length; i++){
   itemExpress[i].disabled = true;
   itemExpress[i].style.cursor = 'not-allowed';
@@ -56,7 +58,7 @@ startBtn.addEventListener('click', function () {
   day.value = new Date(Date.parse(time)).getDay();
   btnExpenses2.disabled = false;
   btnExpenses2.style.opacity = 1;
-  btnExpenses.style.cursor = 'pointer';
+  btnExpenses2.style.cursor = 'pointer';
   for (let i = 0; i < itemExpress.length; i++) {
     itemExpress[i].disabled = false;
     itemExpress[i].style.cursor = 'text';
@@ -65,8 +67,25 @@ startBtn.addEventListener('click', function () {
     itemOptional[i].disabled = false;
     itemOptional[i].style.cursor = 'text';
   }
+  IncomeChoose.disabled = false;
+  IncomeChoose.style.cursor = 'text';
 });
 
+// let expI = function (expValue) {
+//   for(let i = 0; i < itemExpress.length; i++){
+//     if (typeof (expValue[++i] === "string")) {
+//     if (expValue[i] != '') {
+//       btnExpenses.disabled = false;
+//       btnExpenses.style.opacity = 1;
+//       btnExpenses.style.cursor = 'pointer';
+//     } else {
+//       btnExpenses.disabled = true;
+//       btnExpenses.style.opacity = 0.5;
+//       btnExpenses.style.cursor = 'not-allowed';
+//     }
+//   }
+// }
+// }
 
 let expI = function () {
   let exp1 = itemExpress[0].value,
