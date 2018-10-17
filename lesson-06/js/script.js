@@ -21,7 +21,8 @@ let startBtn = document.getElementById('start'),
   percent = document.querySelector('#percent'),
   year = document.querySelector('.year-value'),
   month = document.querySelector('.month-value'),
-  day = document.querySelector('.day-value');
+  day = document.querySelector('.day-value'),
+  body = document.querySelector('body');
 
 let money, time;
 
@@ -31,7 +32,14 @@ btnExpenses1.style.opacity = 0.5;
 btnExpenses1.style.cursor = 'not-allowed';
 btnExpenses2.style.opacity = 0.5;
 btnExpenses2.style.cursor = 'not-allowed';
-
+for(let i = 0; i < itemExpress.length; i++){
+  itemExpress[i].disabled = true;
+  itemExpress[i].style.cursor = 'not-allowed';
+}
+for (let i = 0; i < itemOptional.length; i++){
+  itemOptional[i].disabled = true;
+  itemOptional[i].style.cursor = 'not-allowed';
+}
 
 startBtn.addEventListener('click', function () {
   time = prompt('Введите  дату в формате YYYY-MM-DD', '');
@@ -49,27 +57,53 @@ startBtn.addEventListener('click', function () {
   btnExpenses2.disabled = false;
   btnExpenses2.style.opacity = 1;
   btnExpenses.style.cursor = 'pointer';
+  for (let i = 0; i < itemExpress.length; i++) {
+    itemExpress[i].disabled = false;
+    itemExpress[i].style.cursor = 'text';
+  }
+  for (let i = 0; i < itemOptional.length; i++) {
+    itemOptional[i].disabled = false;
+    itemOptional[i].style.cursor = 'text';
+  }
 });
 
-itemExpress.forEach(function (item) {
-  item.addEventListener('input', function (e) {
-    let target = e.target.value;
-    if (target == null || target == "") {
-      btnExpenses.disabled = true;
-      btnExpenses.style.opacity = 0.5;
-      btnExpenses.style.cursor = 'not-allowed';
-    } else {
+
+let expI = function () {
+  let exp1 = itemExpress[0].value,
+      exp2 = itemExpress[1].value,
+      exp3 = itemExpress[2].value,
+      exp4 = itemExpress[3].value;
+  if (typeof (exp1 || exp3 === "string")) {
+    if ((exp1 != '' && exp2 != '') || (exp3 != '' && exp4 != '')) {
       btnExpenses.disabled = false;
       btnExpenses.style.opacity = 1;
       btnExpenses.style.cursor = 'pointer';
+    } else {
+      btnExpenses.disabled = true;
+      btnExpenses.style.opacity = 0.5;
+      btnExpenses.style.cursor = 'not-allowed';
     }
-  })
+  }
+}
+
+body.addEventListener('input', function (e) {
+  let target = e.target;
+  if (target.classList.contains('expenses-item')) {
+    expI();
+  }
 });
+// itemExpress.forEach(function (item) {
+//   item.addEventListener('input', function (e) {
+//     let target = e.target.value;
+ 
+//     })
+  
+// });
 
 itemOptional.forEach(function (item) {
   item.addEventListener('input', function (e) {
     let target = e.target.value;
-    if (target == null || target == "") {
+    if (target == null && target == "" && target === 'string') {
       btnExpenses1.disabled = true;
       btnExpenses1.style.opacity = 0.5;
       btnExpenses1.style.cursor = 'not-allowed';
