@@ -1,0 +1,83 @@
+window.addEventListener('DOMContentLoaded', function () {
+  'use strict'
+
+  let info = document.querySelector('.info-header'),
+      tab = document.querySelectorAll('.info-header-tab'),
+      tabContent = document.querySelectorAll('.info-tabcontent');
+
+      // Скрываем контетнт которые не должен отображатся
+      function hideTabContent(a) {
+        for(let i = a; i < tabContent.length; i++){
+          tabContent[i].classList.remove('show');
+          tabContent[i].classList.add('hide');
+        }
+      }
+      hideTabContent(1);
+      // Задем появление контента если он скрыт
+      function showTabContent(b) {
+        if(tabContent[b].classList.contains('hide')){
+          tabContent[b].classList.remove('hide');
+          tabContent[b].classList.add('show');
+        }
+      }
+    // Устанавливаем событие при клике на определеную кнопку появлется соответсвующий контент
+    info.addEventListener('click', function (e) {
+      let target = e.target;
+          if (target && target.classList.contains('info-header-tab')) {
+            for(let i = 0; i < tab.length; i++){
+              if (target == tab[i]) {
+                hideTabContent(0);
+                showTabContent(i);
+                break;
+              }
+            }
+          }
+    });
+    // Timer
+    let deadLine = '2018-10-21';
+
+    function getTimeRem(endtime) {
+      let t = Date.parse(deadLine) - Date.parse(new Date()),
+          sec = Math.floor((t/1000) % 60),
+          min = Math.floor((t/1000/60) % 60),
+          hou = Math.floor((t/(1000*60*60)));
+          if (sec < 10) {
+            sec  = "0" + sec;
+          }
+          if (min < 10) {
+            min = "0" + min;
+          }
+          if (hou < 10) {
+            hou = "0" + hou;
+          }
+        return{
+          'total': t,
+          'hours': hou,
+          'minutes': min,
+          'second': sec
+        };
+        
+    }
+    function setClock(id, endtime) {
+      let time = document.getElementById(id),
+          hours = time.querySelector('.hours'),
+          minutes = time.querySelector('.minutes'),
+          second = time.querySelector('.seconds'),
+          timeInterval = setInterval(updateClock, 1000);
+         
+        function updateClock() {
+          let t = getTimeRem(endtime);
+          hours.textContent = t.hours;
+          minutes.textContent = t.minutes;
+          second.textContent = t.second;
+          if (t.total <= 0) {
+            clearInterval(timeInterval);
+            hours.textContent = "00";
+            minutes.textContent = "00";
+            second.textContent = "00";
+          }
+
+        }
+    }
+    setClock('timer', deadLine);
+});
