@@ -5,7 +5,7 @@ let age = document.getElementById('age'),
 btn.addEventListener('click', function() {
   name = nameV;
   surname = sname;
-  age = age.value;
+  age = age;
   function showUser(surname, name) {
     alert('Пользователь ' + this.surname.value + " " + this.nameV.value + ", его возраст " + this.age.value);
   }
