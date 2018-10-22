@@ -27,7 +27,7 @@ window.addEventListener('DOMContentLoaded', () => {
       //   
       // }
     // Устанавливаем событие при клике на определеную кнопку появлется соответсвующий контент
-    info.addEventListener('click', (e) => {
+    info.addEventListener('click', e => {
       let target = e.target;
           if (target && target.classList.contains('info-header-tab')) {
             for(let i = 0; i < tab.length; i++){
@@ -63,7 +63,7 @@ window.addEventListener('DOMContentLoaded', () => {
         'second': sec
       };
     }
-    let setClock = (id, endtime) =>{
+    let setClock = (id, endtime) => {
       let time = document.getElementById(id),
         hours = time.querySelector('.hours'),
         minutes = time.querySelector('.minutes'),
