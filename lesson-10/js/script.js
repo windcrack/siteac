@@ -86,11 +86,11 @@ window.addEventListener('DOMContentLoaded', function () {
         more = document.querySelector('.more'),
         overlay = document.querySelector('.overlay');
 
-      body.addEventListener('click', (e) => {
+      body.addEventListener('click', e => {
         let target = e.target;
         if (target.classList.contains('more')) {
           overlay.style.display = 'block';
-          this.classList.add('more-splash');
+          more.classList.add('more-splash');
           body.style.overflow = 'hidden';
         }
         if (target.classList.contains('popup-close')) {
@@ -100,7 +100,7 @@ window.addEventListener('DOMContentLoaded', function () {
         }
         if (target.classList.contains('description-btn')){
           overlay.style.display = 'block';
-          this.classList.add('more-splash');
+          more.classList.add('more-splash');
           body.style.overflow = 'hidden';
         }
       });
