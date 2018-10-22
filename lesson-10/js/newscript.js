@@ -10,7 +10,7 @@ class Options{
   creadDiv(){
     let div = document.createElement('div');
     div.textContent = text;
-    div.style.cssText = `height:${this.height}px; width:${this.wight}px; color:${this.bg}; font-size:${this.fontSize}px; text-align:${this.textAlign};`;
+    div.style.cssText = `height:${this.height}px; width:${this.wight}px; background:${this.bg}; font-size:${this.fontSize}px; text-align:${this.textAlign};`;
     document.body.appendChild(div);
   }
 }
