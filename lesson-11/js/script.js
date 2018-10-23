@@ -160,7 +160,8 @@ window.addEventListener('DOMContentLoaded', () => {
     // contact
     let contactForm = document.querySelector('#form'),
         inputc = contactForm.getElementsByTagName('input');
-    contactForm.addEventListener('submit', function(e){
+
+    contactForm.addEventListener('submit', e => {
         e.preventDefault();
         contactForm.appendChild(statusMesage);
 
@@ -172,12 +173,12 @@ window.addEventListener('DOMContentLoaded', () => {
         let contactData = new FormData(contactForm);
 
         let newobj = {};
-        contactData.forEach( function(value, key) {
+        contactData.forEach((value, key) => {
           newobj[key] = value;
         });
         let json = JSON.stringify(newobj);
         request.send(json);
-        request.addEventListener('readystatechange', () =>{
+        request.addEventListener('readystatechange', () => {
           if (request.readyState < 4) {
             statusMesage.innerHTML = message.loading;
           } else if (request.readyState === 4 && request.status == 200) {
@@ -190,6 +191,5 @@ window.addEventListener('DOMContentLoaded', () => {
         for(let i = 0; i < inputc.length; i++){
           inputc[i].value = '';
         }
-    });
-    
+    }); 
 });
