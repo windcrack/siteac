@@ -158,7 +158,7 @@ window.addEventListener('DOMContentLoaded', () => {
     body.addEventListener('submit' , e => {
       e.preventDefault();
       let target = e.target;
-      if (target.classList = 'main-form') {
+      if (target.classList.contains('main-form')) {
         target.appendChild(statusMesage);
         ajaxSend(target);        
       }
