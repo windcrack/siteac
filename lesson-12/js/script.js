@@ -118,18 +118,13 @@ window.addEventListener('DOMContentLoaded', () => {
     fail: 'Что то пошло не так...'
   };
 
-  let form = document.getElementsByClassName('main-form')[0],
-      contatform = document.getElementById('form'),
-      input = form.getElementsByTagName('input'),
-      statusMesage = document.createElement('div');
-      statusMesage.classList.add('status');
-
-  function sendF(forms) {
-    forms.addEventListener('submit', e => {
-      e.preventDefault();
-      forms.appendChild(statusMesage);
-      let formsData = new FormData(forms);
-
+      let form = document.getElementsByClassName('main-form')[0],
+        contatform = document.getElementById('form'),
+        input = form.getElementsByTagName('input'),
+        statusMesage = document.createElement('div');
+        statusMesage.classList.add('status');
+  function ajaxSend(target) {
+    let formsData = new FormData(target);
       function formPost(data) {
         return new Promise((resolve, reject) => {
           let request = new XMLHttpRequest();
@@ -159,8 +154,27 @@ window.addEventListener('DOMContentLoaded', () => {
         .then(() => statusMesage.innerHTML = message.success)
         .catch(() => statusMesage.innerHTML = message.fail)
         .then(inputClear)
+    }
+    body.addEventListener('submit' , e => {
+      e.preventDefault();
+      let target = e.target;
+      if (target.classList = 'main-form') {
+        target.appendChild(statusMesage);
+        ajaxSend(target);        
+      }
+      if (target.id = 'form') {
+        target.appendChild(statusMesage);
+        ajaxSend(target);
+      }
     });
-  }
-  sendF(form);
-  sendF(contatform);
 });
+//   function sendF(forms) {
+//     forms.addEventListener('submit', e => {
+//       e.preventDefault();
+//       forms.appendChild(statusMesage);
+//       let formsData = new FormData(forms);
+
+//       
+//   }
+//   sendF(form);
+//   sendF(contatform);
