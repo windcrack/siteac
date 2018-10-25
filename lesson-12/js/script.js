@@ -12,9 +12,6 @@ window.addEventListener('DOMContentLoaded', () => {
       tabContent[i].classList.add('hide');
     }
   }
-  // function hideTabContent(a) {
-  //   
-  // }
   hideTabContent(1);
   // Задем появление контента если он скрыт
   let showTabContent = b => {
@@ -23,9 +20,6 @@ window.addEventListener('DOMContentLoaded', () => {
       tabContent[b].classList.add('show');
     }
   }
-  // function showTabContent(b) {
-  //   
-  // }
   // Устанавливаем событие при клике на определеную кнопку появлется соответсвующий контент
   info.addEventListener('click', e => {
     let target = e.target;
@@ -40,7 +34,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   });
   // Timer
-  let deadLine = '2018-10-25';
+  let deadLine = '2018-10-31';
 
   let getTimeRem = endtime => {
     let t = Date.parse(deadLine) - Date.parse(new Date()),
@@ -118,11 +112,11 @@ window.addEventListener('DOMContentLoaded', () => {
     fail: 'Что то пошло не так...'
   };
 
-      let form = document.getElementsByClassName('main-form')[0],
-        contatform = document.getElementById('form'),
-        input = form.getElementsByTagName('input'),
-        statusMesage = document.createElement('div');
-        statusMesage.classList.add('status');
+  let form = document.getElementsByClassName('main-form')[0],
+    contatform = document.getElementById('form'),
+    input = form.getElementsByTagName('input'),
+    statusMesage = document.createElement('div');
+    statusMesage.classList.add('status');
   function ajaxSend(target) {
     let formsData = new FormData(target);
       function formPost(data) {
@@ -158,23 +152,9 @@ window.addEventListener('DOMContentLoaded', () => {
     body.addEventListener('submit' , e => {
       e.preventDefault();
       let target = e.target;
-      if (target.classList.contains('main-form')) {
+      if (target.classList.contains('main-form') || (target.id = 'form')) {
         target.appendChild(statusMesage);
         ajaxSend(target);        
       }
-      if (target.id = 'form') {
-        target.appendChild(statusMesage);
-        ajaxSend(target);
-      }
     });
 });
-//   function sendF(forms) {
-//     forms.addEventListener('submit', e => {
-//       e.preventDefault();
-//       forms.appendChild(statusMesage);
-//       let formsData = new FormData(forms);
-
-//       
-//   }
-//   sendF(form);
-//   sendF(contatform);
