@@ -8,7 +8,12 @@ $(document).ready(function () {
       $('div.modal').slideDown('slow');
     }
   });
-  
+  document.addEventListener('keypress', e => {
+    if (e.keyCode == 27) {
+      $('div.overlay').hide(100);
+      $('div.modal').slideUp('slow');
+    }
+  });
   $("[href='#sheldure']").click(function () {
     $('div.overlay').show('slow');
     $('div.modal').slideDown('slow');
