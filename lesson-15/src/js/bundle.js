@@ -1,12 +1,12 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 window.addEventListener('DOMContentLoaded', () => {
   "use strict";
-  let calc = require('../src/js/parts/calc.js'),
-      form = require('../src/js/parts/form.js'),
-      slider = require('../src/js/parts/slider.js'),
-      tabs = require('../src/js/parts/tabs.js'),
-      timer = require('../src/js/parts/timer.js'),
-      modal = require('../src/js/parts/modal.js');
+  let calc = require('parts/calc.js'),
+      form = require('parts/form.js'),
+      slider = require('parts/slider.js'),
+      tabs = require('parts/tabs.js'),
+      timer = require('parts/timer.js'),
+      modal = require('parts/modal.js');
   calc();
   form();
   slider();
@@ -14,7 +14,7 @@ window.addEventListener('DOMContentLoaded', () => {
   timer();
   modal();
 });
-},{"../src/js/parts/calc.js":48,"../src/js/parts/form.js":49,"../src/js/parts/modal.js":50,"../src/js/parts/slider.js":51,"../src/js/parts/tabs.js":52,"../src/js/parts/timer.js":53}],2:[function(require,module,exports){
+},{"parts/calc.js":48,"parts/form.js":49,"parts/modal.js":50,"parts/slider.js":51,"parts/tabs.js":52,"parts/timer.js":53}],2:[function(require,module,exports){
 module.exports = function (it) {
   if (typeof it != 'function') throw TypeError(it + ' is not a function!');
   return it;
