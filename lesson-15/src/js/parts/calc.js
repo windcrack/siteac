@@ -10,7 +10,7 @@ function calc() {
       daysSum = 0,
       total = 0;
   totalValue.innerHTML = 0;
-  persons.addEventListener('change', function () {
+  persons.addEventListener('input', function () {
     personSum = +this.value;
 
     if (restDays.value == '') {
@@ -25,7 +25,7 @@ function calc() {
       }
     }
   });
-  restDays.addEventListener('change', function () {
+  restDays.addEventListener('input', function () {
     daysSum = +this.value;
 
     if (persons.value == '') {
@@ -50,4 +50,4 @@ function calc() {
   });
 }
 
-module.exports = calc;
+export default calc;
